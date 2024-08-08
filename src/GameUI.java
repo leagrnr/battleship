@@ -7,7 +7,7 @@ public class GameUI extends JFrame {
     private Game game;
     private JButton[][] playerButtons;
     private JButton[][] computerButtons;
-    private int size = 10; // Traditional Battleship grid size
+    private int size = 10;
 
     public GameUI() {
         game = new Game(size);
@@ -45,7 +45,6 @@ public class GameUI extends JFrame {
                             }
                         }
 
-                        // Le joueur joue son coup
                         if (game.playerTurn(x, y)) {
                             button.setText("X");
                         } else {
@@ -57,10 +56,8 @@ public class GameUI extends JFrame {
                             System.exit(0);
                         }
 
-                        // Forcer la mise à jour de l'interface graphique
                         SwingUtilities.invokeLater(new Runnable() {
                             public void run() {
-                                // L'ordinateur joue son coup
                                 if (game.computerTurn()) {
                                     int[] move = game.getLastComputerMove();
                                     if (game.getPlayerBoard().checkHit(move[0], move[1])) {
